@@ -19,8 +19,14 @@ $chr=$_POST["chr"];
 $coord=$_POST["coord"];
 $allele=$_POST["allele"];
 
-$output=shell_exec("./beacon.sh $ref $chr $coord $allele 2>&1");
-echo "<pre>$output<pre>";
+if (ctype_alnum($allele) && ctype_digit($coord)){
+	$output=shell_exec("./beacon.sh $ref $chr $coord $allele 2>&1");
+	echo "<pre>$output<pre>";
+}
+else{
+	
+		        echo "<pre>Wrong input formatting</pre>";
+}
 ?>
 
 </body>
